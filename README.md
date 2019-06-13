@@ -35,7 +35,7 @@ Run `iwgetid` to see what wifi network the Pi is connected to.
 
 ### Network Interfaces
 
-Open `/etc/network/interfaces` and make sure the following lines are in there someplace:
+Open `/etc/network/interfaces` and make sure the following lines are there:
 ```
 auto wlan0
 iface wlan0 inet manual
@@ -59,7 +59,7 @@ https://wiki.archlinux.org/index.php/wicd
 
 ## Connecting to the Raspberry Pi
 
-Very useful documentation for a variety of ways to connect to the pi:
+Documentation for ways to connect to the pi without a monitor:
 https://www.raspberrypi.org/documentation/remote-access/
 
 ## Finding the Raspberry Pi on the network
@@ -73,10 +73,21 @@ sudo nmap -sP [router-ip-addres]/24
 ```
 
 You should see a name 'raspberrypi' listed next to an IP address. If not, be sure to sudo,
-or take a look at the OUI of the MAC address. Raspberry Pi MAC addresses are prefixed with the OUI B8:27:EB.
+or take a look at the OUI of the MAC address. Raspberry Pi MAC addresses are prefixed with B8:27:EB.
 The first three octets of the MAC address are the Organizationally Unique Identifier (OUI) for the Raspberry Pi Foundation.
 
 If that doesn't find it / takes too long, check the arp tables:
 ```
 arp -na | grep b8
+```
+
+## Connecting to bluetooth devices
+
+Launch the bluetooth tool
+
+```
+bluetoothctl
+agent on # activate bluetooth chip
+scan on # look for active bluetooth devices
+connect [MAC-address] # connect to bluetooth device
 ```

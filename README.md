@@ -81,6 +81,11 @@ If that doesn't find it / takes too long, check the arp tables:
 arp -na | grep b8
 ```
 
+If you can log into the Raspberry Pi through ethernet, running `hostname -I` will give you a list of IP addresses.
+Try to ssh into the Raspberry Pi using these IP addresses.
+
+If you still have issues connected the Raspberry Pi to wifi, have only the desired network to connect to in `wpa_supplicant.conf` then run `sudo reboot`. 
+
 ## Connecting to bluetooth devices
 
 Launch the bluetooth tool
